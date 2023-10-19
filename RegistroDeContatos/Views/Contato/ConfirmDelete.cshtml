@@ -1,0 +1,9 @@
+﻿@using RegistroDeContatos.Data.Dtos;
+@model ReadContatoDto;
+
+<h1 class="text-center">Deseja realmente apagar o contato @Model.Name ?</h1>
+
+<div class="d-flex gap-2 justify-content-center">
+    <a class="btn btn-success" asp-action="Delete" asp-controller="Contato" asp-route-id="@Model.Id">Sim</a>
+    <a class="btn btn-danger" asp-action="Index" asp-controller="Contato">Não</a>
+</div>

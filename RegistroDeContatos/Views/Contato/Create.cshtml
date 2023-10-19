@@ -1,0 +1,22 @@
+﻿@using RegistroDeContatos.Data.Dtos;
+@model CreateContatoDto;
+
+<h1>Registrar novo Contato</h1>
+
+<form asp-action="Create" asp-controller="Contato" method="post">
+    <div class="mb-3">
+        <label for="exampleInputEmail1"  class="form-label">Email address</label>
+        <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="nameInput" class="form-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" id="nameInput">
+    </div>
+    <div class="mb-3">
+        <label for="telInput" class="form-label">Phone Number</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" id="telInput">
+    </div>
+    <a asp-action="Index" class="btn btn-danger">Voltar</a>
+    <button type="submit" asp-action="Create" asp-controller="Contato" class="btn btn-primary">Submit</button>
+</form>

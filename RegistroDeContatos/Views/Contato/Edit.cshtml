@@ -1,0 +1,24 @@
+﻿@using RegistroDeContatos.Data.Dtos;
+@model ReadContatoDto;
+
+
+<h1>Editar Contato</h1>
+
+<form asp-action="Edit" asp-controller="Contato" method="post">
+    <input type="hidden" asp-for="@Model.Id"/>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nome</label>
+        <input type="email" asp-for="Email" value="@Model.Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="nameInput" class="form-label">Name</label>
+        <input type="text" value="@Model.Name" asp-for="Name" class="form-control" id="nameInput">
+    </div>
+    <div class="mb-3">
+        <label for="telInput" class="form-label">Phone Number</label>
+        <input type="text" value="@Model.PhoneNumber" asp-for="PhoneNumber" class="form-control" id="telInput">
+    </div>
+    <a asp-action="Index" class="btn btn-danger">Voltar</a>
+    <button type="submit" asp-action="Edit" asp-controller="Contato" class="btn btn-primary">Submit</button>
+</form>

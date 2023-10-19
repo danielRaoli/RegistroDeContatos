@@ -1,0 +1,49 @@
+﻿@using RegistroDeContatos.Data.Dtos;
+
+@model IEnumerable<ReadContatoDto>
+
+<h1 class="text-center mb-4">Lista de Contatos</h1>
+
+<table class="table mb-4">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contato in Model)
+        {
+            <tr>
+                <td>
+                    @contato.Name
+                </td>
+                <td>
+                    @contato.Email
+                </td>
+                <td>
+                    @contato.PhoneNumber
+                </td>
+                <td>
+                    <div>
+                        <a asp-action="Edit" asp-controller="Contato" asp-route-id="@contato.Id" class="btn btn-primary">Edit</a>
+                        <a asp-action="ConfirmDelete" asp-controller="Contato" asp-route-id="@contato.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="d-flex justify-content-end">
+    <a asp-action="Create" asp-controller="Contato" class="btn btn-outline-dark d-inline-block">Registrar novo Contato</a>
+</div>
