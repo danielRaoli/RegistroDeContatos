@@ -53,19 +53,41 @@ namespace RegistroDeContatos.Controllers
         [HttpPost]
         public IActionResult Create(CreateContatoDto contatoDto)
         {
-            _contatoRepository.CreateContato(contatoDto);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                if (TryValidateModel(contatoDto))
+                {
+                    _contatoRepository.CreateContato(contatoDto);
+                    TempData["SuccessMensage"] = "Usuário criado com sucesso";
+                    return RedirectToAction(nameof(Index));
+                }
+                return View("Create", contatoDto);
+            }catch (Exception ex)
+            {
+                TempData["ErrorMensage"] = "Erro ao tentar registrar novo cliente";
+                return RedirectToAction(nameof(Index));
+            }
+            
         }
 
         [HttpPost]
         public IActionResult Edit(ReadContatoDto contatoDto)
         {
+            try
+            {
             if (TryValidateModel(contatoDto))
             {
                 _contatoRepository.EditContato(contatoDto);
+                    TempData["SuccessMensage"] = "Usuário editado com sucesso";
                 return RedirectToAction(nameof(Index));
             }
-            return BadRequest();
+            return View("Edit",contatoDto);
+
+            }catch(Exception ex)
+            {
+                TempData["errorMensage"] = "Erro ao tentar criar usuário";
+                return RedirectToAction(nameof(Index));
+            }
 
         }
 

@@ -2,6 +2,27 @@
 
 @model IEnumerable<ReadContatoDto>
 
+@if(TempData["SuccessMensage"] != null)
+{
+    <div class="alert alert-success d-flex align-items-center justify-content-center" role="alert">
+        <div>
+            @TempData["SuccessMensage"];
+        </div>
+        <button class="btn btn-danger close-alert">X</button>
+    </div>
+}
+
+
+@if (TempData["ErrorMensage"] != null)
+{
+    <div class="alert alert-danger d-flex align-items-center justify-content-center" role="alert">
+        <div>
+            @TempData["ErrorMensage"];
+        </div>
+        <button class="btn btn-danger close-alert">X</button>
+    </div>
+}
+
 <h1 class="text-center mb-4">Lista de Contatos</h1>
 
 <table class="table mb-4">
